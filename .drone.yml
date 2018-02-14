@@ -7,3 +7,14 @@ pipeline:
     when:
       event: [ push ]
       branch: [ master ]
+  notify_line:
+    image: appleboy/drone-line
+    secrets: [ plugin_channel_secret, plugin_channel_token, plugin_to_group ]
+    images:
+      - https://static-cdn.jtvnw.net/jtv_user_pictures/1e7b36522a04cb7e-profile_image-300x300.jpeg
+    message: |
+      {{#success build.status}}
+        {{build.author}} trigger build #{{build.number}} {{repo.name}} by {{build.event}} to branch {{build.branch}} succeeded.
+      {{else}}
+        build {{ build.number }} failed. Fix me please.
+      {{/success}}
