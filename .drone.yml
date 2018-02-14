@@ -2,11 +2,12 @@ pipeline:
   build:
     image: plugins/docker
     repo: hchstera/alpine-php-cron
-    secrets: [ docker_username, docker_password, docker_email ]
+    secrets: [ docker_username, docker_password ]
     tags: latest
     when:
       event: [ push ]
       branch: [ master ]
+
   notify_line:
     image: appleboy/drone-line
     secrets: [ plugin_channel_secret, plugin_channel_token, plugin_to_group ]
