@@ -1,0 +1,9 @@
+pipeline:
+  build:
+    image: plugins/docker
+    repo: hchstera/alpine-php-cron
+    secrets: [ docker_username, docker_password, docker_email ]
+    tags: latest
+    when:
+      event: [ push ]
+      branch: [ master ]
