@@ -4,7 +4,12 @@ LABEL maintainer="g9308370@hotmail.com"
 
 RUN set -ex \
     # install bash
-    && apk add --no-cache --update
+    && apk add --no-cache --update curl\
+    vim \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    openssl-dev \
+    libmcrypt-dev
 
 RUN docker-php-ext-install \
     # Install the PHP mcrypt extension
