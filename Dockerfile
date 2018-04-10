@@ -9,7 +9,8 @@ RUN set -ex \
     libjpeg-turbo-dev \
     libpng-dev \
     openssl-dev \
-    libmcrypt-dev
+    libmcrypt-dev \
+    bash
 
 RUN docker-php-ext-install \
     # Install the PHP mcrypt extension
@@ -27,4 +28,4 @@ RUN mkdir -p /var/log/cron \
 COPY start-cron.sh /usr/sbin
 RUN chmod 777 /usr/sbin/start-cron.sh
 
-CMD ["start-cron.sh"]
+CMD ["/bin/bash", "/usr/sbin/start-cron.sh"]
