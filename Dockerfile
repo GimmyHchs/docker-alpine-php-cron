@@ -25,6 +25,8 @@ RUN mkdir -p /var/log/cron \
     && touch /var/log/cron/cron.log \
     && mkdir -m 0644 -p /etc/cron.d
 
+RUN chmod 777 /var/log/cron/cron.log
+
 COPY start-cron.sh /usr/sbin
 RUN chmod 777 /usr/sbin/start-cron.sh
 
